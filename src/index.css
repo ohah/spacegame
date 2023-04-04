@@ -1,3 +1,21 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+	.btn-primary {
+		@apply cyan:border-cyan-400 cyan:hover:bg-cyan-400 cyan:hover:border-cyan-500 border cyan:bg-cyan-500 dark:border-stone-400 dark:hover:bg-stone-700 dark:hover:border-stone-500 border dark:bg-stone-500 px-2 py-1 rounded text-sm font-bold;
+	}
+	.btn-error {
+		@apply text-gray-200 bg-red-500 border border-red-400 hover:bg-red-600 px-2 py-1 rounded text-sm font-bold;
+	}
+	.btn-success {
+		@apply text-gray-200 bg-green-500 border border-green-400 hover:bg-green-600 px-2 py-1 rounded text-sm font-bold;
+	}
+	.btn-warning {
+		@apply text-gray-200 bg-yellow-500 border border-yellow-400 hover:bg-yellow-600 px-2 py-1 rounded text-sm font-bold;
+	}
+	.btn-info {
+		@apply text-gray-200 bg-sky-500 border border-sky-400 hover:bg-sky-600 px-2 py-1 rounded text-sm font-bold;
+	}
+}

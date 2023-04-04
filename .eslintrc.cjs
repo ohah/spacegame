@@ -1,3 +1,4 @@
+/** @type {import('eslint').Linter.Config} */
 module.exports = {
   env: {
     browser: true,
@@ -67,11 +68,44 @@ module.exports = {
     'import/order': [
       'error',
       {
-        groups: ['builtin', 'external', ['parent', 'sibling'], 'index', 'object'],
+        groups: ['builtin', 'external', ['index', 'parent'], 'sibling', 'object', 'unknown'],
         alphabetize: {
           order: 'asc',
           caseInsensitive: true,
         },
+        pathGroups: [
+          {
+            pattern: '{react*,react*/**,react-dom/*,react-router-dom/*,recoil}',
+            group: 'external',
+            position: 'before',
+          },
+          {
+            pattern: '{@tanstack*/**,@**/**,msw*}',
+            group: 'external',
+            position: 'after',
+          },
+          {
+            pattern: '*/**.css',
+            group: 'index',
+          },
+          {
+            pattern: '{pages*,pages*/**}',
+            group: 'index',
+          },
+          {
+            pattern: '{mocks/*,mocks}',
+            group: 'unknown',
+          },
+          {
+            pattern: '{utils/*,utils}',
+            group: 'unknown',
+          },
+          {
+            pattern: '{components,components/*}',
+            group: 'unknown',
+          },
+        ],
+        pathGroupsExcludedImportTypes: ['react', 'unknown', 'index'],
         'newlines-between': 'always',
       },
     ],

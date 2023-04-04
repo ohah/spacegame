@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable react/state-in-constructor */
 import React from 'react';
 interface Props {
@@ -18,7 +19,7 @@ class ErrorBoundary extends React.Component<Props, State> {
     return { hasError: true };
   }
 
-  public componentDidCatch(error: Error, errorInfo: React.ErrorInfo) {
+  public componentDidCatch(_error: Error, _errorInfo: React.ErrorInfo) {
     // console.error("error:", error, errorInfo);
   }
 

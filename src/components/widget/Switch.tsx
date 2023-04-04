@@ -1,4 +1,5 @@
 import React, { HTMLAttributes } from 'react';
+
 import { uuidv4 } from 'utils';
 
 interface SwtichProps extends HTMLAttributes<HTMLInputElement> {

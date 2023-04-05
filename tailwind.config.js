@@ -3,19 +3,19 @@ import { themeVariants } from 'tailwindcss-theme-variants';
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ['./src/**/*.{js,jsx,ts,tsx}', './storybook/**/*.{js,jsx,ts,tsx}'],
-  // darkMode: 'class',
-  theme: {
-    expect: {},
-  },
+  content: ['./src/**/*.{js,jsx,ts,tsx}', './storybook/**/*.{js,jsx,ts,tsx}', './src/**/*.css'],
+  darkMode: ['class'],
+  // theme: {
+  //   expect: {},
+  // },
   plugins: [
     themeVariants({
       themes: {
-        cyan: {
-          selector: '.cyan-theme',
-        },
         dark: {
-          selector: '.dark-theme',
+          selector: '.dark',
+        },
+        cyan: {
+          selector: '.cyan',
         },
       },
     }),

@@ -1,7 +1,7 @@
 import type { Preview } from '@storybook/react';
 import { initialize, mswDecorator } from 'msw-storybook-addon';
 import React from 'react';
-import { Body } from "../src/components"
+import { Body } from '../src/components';
 
 /*
  * Initializes MSW
@@ -24,14 +24,14 @@ const preview: Preview = {
     theme: {
       name: 'Theme',
       description: 'Global theme for components',
-      defaultValue: 'all-theme',
+      defaultValue: 'cyan',
       toolbar: {
         icon: 'circlehollow',
         // Array of plain string values or MenuItem shape (see below)
         items: [
-          { title: 'All', value: 'all-theme' },
-          { title: 'cyan', value: 'cyan-theme' },
-          { title: 'dark', value: 'dark-theme' }
+          { title: 'All', value: 'all' },
+          { title: 'cyan', value: 'cyan' },
+          { title: 'dark', value: 'dark' },
         ],
         // Property that specifies if the name of the item will be displayed
         showName: true,

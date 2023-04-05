@@ -1,10 +1,9 @@
 // eslint-disable-next-line import/no-import-module-exports
 import { themeVariants } from 'tailwindcss-theme-variants';
-// import { createThemes } from 'tw-colors';
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ['./src/**/*.{js,jsx,ts,tsx}'],
+  content: ['./src/**/*.{js,jsx,ts,tsx}', './storybook/**/*.{js,jsx,ts,tsx}'],
   // darkMode: 'class',
   theme: {
     expect: {},
@@ -20,9 +19,5 @@ module.exports = {
         },
       },
     }),
-    // createThemes(({ light, dark }) => ({
-    //   cyan: dark(),
-    //   dark: dark(),
-    // })),
   ],
 };

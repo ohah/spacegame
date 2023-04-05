@@ -8,42 +8,33 @@ const meta = {
   title: 'Components/Button',
   component: Button,
   tags: ['autodocs'],
-  parameters: {
-    theming: {
-      themeOverride: 'cyan', // component level override
+  decorators: [
+    (Story, context) => {
+      const args = { ...context.args, theme: context.theme };
+      return <Story args={args} />
     },
-  },
-  argTypes: {
-    // color: { control: 'text' },
-  },
+  ]
 } satisfies Meta<typeof Button>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
+
 // More on writing stories with args: https://storybook.js.org/docs/7.0/react/writing-stories/args
-export const Primary: Story = {
-  args: {
-    className: 'btn-primary',
-    children: <>버튼</>,
-  },
-};
+// export const 안녕: Story = {
+//   args: {
+//     className: 'btn-primary',
+//     children: <>버튼</>,
+//   },
+//   render: ({ theme, ...args }) => {
+//     console.log(theme, args);
+//     return <Button>
+//       버튼
+//     </Button>
+//   }
+// };
 
-export const Secondary: Story = {
-  args: {
-    className: 'btn-primary',
-    children: <>버튼</>,
-  },
-};
-
-export const Large: Story = {
-  args: {
-    className: 'btn-primary',
-    children: <>버튼</>,
-  },
-};
-
-export const Small: Story = {
+export const 기본: Story = {
   args: {
     className: 'btn-primary',
     children: <>버튼</>,

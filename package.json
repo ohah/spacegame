@@ -61,7 +61,6 @@
     "prettier": "^2.8.7",
     "prop-types": "^15.8.1",
     "storybook": "^7.0.2",
-    "storybook-addon-themes": "^6.1.0",
     "tailwindcss": "latest",
     "tailwindcss-theme-variants": "^2.0.0-beta.0",
     "tw-colors": "^1.2.0",

@@ -1,0 +1,71 @@
+@font-face {
+  font-family: 'SCoreDream';
+  font-weight: 100;
+  font-style: normal;
+  src: url('./font/SCoreDream100.otf');
+  font-display: swap;
+}
+@font-face {
+  font-family: 'SCoreDream';
+  font-weight: 200;
+  font-style: normal;
+  src: url('./font/SCoreDream200.otf');
+  font-display: swap;
+}
+@font-face {
+  font-family: 'SCoreDream';
+  font-weight: 300;
+  font-style: normal;
+  src: url('./font/SCoreDream300.otf');
+  font-display: swap;
+}
+@font-face {
+  font-family: 'SCoreDream';
+  font-weight: 400;
+  font-style: normal;
+  src: url('./font/SCoreDream400.otf');
+  font-display: swap;
+}
+@font-face {
+  font-family: 'SCoreDream';
+  font-weight: 500;
+  font-style: normal;
+  src: url('./font/SCoreDream500.otf');
+  font-display: swap;
+}
+@font-face {
+  font-family: 'SCoreDream';
+  font-weight: 600;
+  font-style: normal;
+  src: url('./font/SCoreDream600.otf');
+  font-display: swap;
+}
+@font-face {
+  font-family: 'SCoreDream';
+  font-weight: 700;
+  font-style: normal;
+  src: url('./font/SCoreDream700.otf');
+  font-display: swap;
+}
+@font-face {
+  font-family: 'SCoreDream';
+  font-weight: 800;
+  font-style: normal;
+  src: url('./font/SCoreDream800.otf');
+  font-display: swap;
+}
+@font-face {
+  font-family: 'SCoreDream';
+  font-weight: 900;
+  font-style: normal;
+  src: url('./font/SCoreDream900.otf');
+  font-display: swap;
+}
+
+@font-face {
+	font-family: 'BMJUA';
+	src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/BMJUA.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+

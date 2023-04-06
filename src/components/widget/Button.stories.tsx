@@ -1,3 +1,4 @@
+/* eslint-disable storybook/prefer-pascal-case */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import type { Meta, StoryObj } from '@storybook/react';
 

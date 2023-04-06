@@ -2,6 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+.menu {
+	font-family: 'SCoreDream';
+	font-weight: 500;
+}
+
+html {
+	font-family: 'BMJUA'
+}
+
 @layer components {
 	.btn {
 		@apply px-2 py-1 rounded text-sm font-bold border;

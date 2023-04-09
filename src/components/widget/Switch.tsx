@@ -8,7 +8,7 @@ interface SwtichProps extends HTMLAttributes<HTMLInputElement> {
 
 const Switch = (props: SwtichProps) => {
   const uuid = uuidv4();
-  const { text, ...attr } = props;
+  const { ...attr } = props;
   return (
     <label htmlFor={uuid} className="relative inline-flex items-center cursor-pointer">
       <input id={uuid} type="checkbox" className="sr-only peer" {...attr} />

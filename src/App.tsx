@@ -1,6 +1,8 @@
-import { BrowserRouter, Route, Router, Routes } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 
-import { Body, Header, SideBar } from 'components';
+import { Office } from 'pages';
+
+import { Auth, Body, Header, SideBar } from 'components';
 
 function App() {
   return (
@@ -10,11 +12,14 @@ function App() {
       </div>
       <div className="flex min-w-full min-h-full flex-grow">
         <SideBar />
-        <div className="flex-grow w-full">
+        <main className="flex-grow p-3">
           <Routes>
-            <Route path="/" element={<div> ㅁㄴㅇㄹ </div>} />
+            <Route path="/" element={<Auth />}>
+              <Route path="/" element={<Office />} />
+              <Route path="/test" element={<Office />} />
+            </Route>
           </Routes>
-        </div>
+        </main>
       </div>
     </Body>
   );

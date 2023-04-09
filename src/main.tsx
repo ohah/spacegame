@@ -7,6 +7,8 @@ import { RecoilRoot } from 'recoil';
 import App from 'App';
 import 'index.css';
 import 'font.css';
+import 'react-grid-layout/css/styles.css';
+import 'react-resizable/css/styles.css';
 
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 

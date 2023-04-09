@@ -23,3 +23,9 @@ export const setClass = (prefix: string, color?: Color, className?: string): str
   if (className?.trim() && color?.trim()) return [`${prefix}-${color}`, className].join(' ').trim();
   return `${prefix} ${prefix}-primary`;
 };
+
+export const printSign = (num?: number) => {
+  if (num && num > 0) return '+' + num;
+  if (num && num < 0) return '-' + Math.abs(num);
+  return num;
+};

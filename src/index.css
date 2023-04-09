@@ -12,6 +12,9 @@ html {
 }
 
 @layer components {
+	.sidebar-basis{
+		@apply basis-56;
+	}
 	.btn {
 		@apply px-2 py-1 rounded text-sm font-bold border;
 	}
@@ -31,5 +34,8 @@ html {
 	}
 	.btn-info {
 		@apply text-white bg-sky-500 border border-sky-400 hover:bg-sky-600 rounded text-sm font-bold;
+	}
+	.icon {
+		@apply w-full h-full p-2 rounded text-gray-500 transition duration-75 cyan:text-gray-200 dark:text-gray-100 dark:group-hover:bg-slate-700 fill-gray-500 cyan:fill-gray-200 dark:fill-gray-100
 	}
 }

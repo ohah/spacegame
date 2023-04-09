@@ -81,7 +81,7 @@ module.exports = {
             position: 'before',
           },
           {
-            pattern: '{@tanstack*/**,@**/**,msw*}',
+            pattern: '{@tanstack*/**,@**/**,msw*,axios*}',
             group: 'external',
             position: 'after',
           },

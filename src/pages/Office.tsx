@@ -13,7 +13,7 @@ import {
   EllipsisVerticalIcon,
 } from '@heroicons/react/24/solid';
 
-import { Card } from 'components/widget';
+import { Card, MutilSelectListBox } from 'components/widget';
 import { printSign } from 'utils';
 
 const ResponsiveGridLayout = WidthProvider(Responsive);
@@ -248,6 +248,7 @@ const Office = () => {
           <Card.Title> 6 </Card.Title>
         </Card>
       </ResponsiveGridLayout>
+      <MutilSelectListBox<{ value: string }> onChange={() => {}} list={[{ value: 'asdf' }]} value={{ value: 'asdf' }} />
     </article>
   );
 };

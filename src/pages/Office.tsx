@@ -248,7 +248,11 @@ const Office = () => {
           <Card.Title> 6 </Card.Title>
         </Card>
       </ResponsiveGridLayout>
-      <MutilSelectListBox<{ value: string }> onChange={() => {}} list={[{ value: 'asdf' }]} value={{ value: 'asdf' }} />
+      <MutilSelectListBox<{ value: string }>
+        onChange={() => {}}
+        list={[{ title: 'asdf', value: 'asdf' }]}
+        defaultValue={{ title: 'asdf', value: 'asdf' }}
+      />
     </article>
   );
 };

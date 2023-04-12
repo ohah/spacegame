@@ -2,52 +2,48 @@ import React, { useState } from 'react';
 
 import { Listbox, Transition } from '@headlessui/react';
 
-interface MutilSelectListBoxProps<T> {
-  onChange: (value: T) => void;
-  list: T[];
-  // [key in keyof K]: string;
-  value: T;
+interface MutilSelectValue {
+  title: string;
+  value: string;
 }
-const people = [
-  'Wade Cooper',
-  'Arlene Mccoy',
-  'Devon Webb',
-  'Tom Cook',
-  'Tanya Fox',
-  'Hellen Schmidt',
-  'Caroline Schultz',
-  'Mason Heaney',
-  'Claudie Smitham',
-  'Emil Schaefer',
-];
+interface MutilSelectListBoxProps<T> {
+  onChange: (value: MutilSelectValue) => void;
+  list: MutilSelectValue[];
+  // [key in keyof K]: string;
+  defaultValue: MutilSelectValue;
+}
 
-const MutilSelectListBox = <T,>(props: MutilSelectListBoxProps<T>) => {
+const MutilSelectListBox = <T,>({ onChange, defaultValue, list }: MutilSelectListBoxProps<T>) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedPersons, setSelectedPersons] = useState<any>([]);
+  const [selectedValues, setSelectedValues] = useState<MutilSelectValue[]>([]);
   function isSelected(value: any) {
-    return !!selectedPersons.find((el: any) => el === value);
+    return !!selectedValues.find((el: any) => el === value);
   }
 
-  function handleSelect(value: any) {
+  function handleSelect(value: MutilSelectValue[]) {
+    console.log('value', value);
     if (!isSelected(value)) {
-      const selectedPersonsUpdated = [...selectedPersons, people.find(el => el === value)];
-      setSelectedPersons(selectedPersonsUpdated);
+      const selectValue = list.find(el => Object.is(el, value));
+      if (selectValue) {
+        const selectedValueUpdated = [...selectedValues, selectValue];
+        setSelectedValues([...selectedValueUpdated]);
+      }
     } else {
-      handleDeselect(value);
+      handleDeselect(value[0]);
     }
     setIsOpen(true);
   }
 
-  function handleDeselect(value: any) {
-    const selectedPersonsUpdated = selectedPersons.filter((el: any) => el !== value);
-    setSelectedPersons(selectedPersonsUpdated);
+  function handleDeselect(value: MutilSelectValue) {
+    const selectedPersonsUpdated = list.filter(el => Object.is(el, value));
+    setSelectedValues(selectedPersonsUpdated);
     setIsOpen(true);
   }
   return (
     <Listbox
       as="ul"
       className="space-y-1"
-      value={selectedPersons}
+      value={selectedValues}
       onChange={value => handleSelect(value)}
       // open={isOpen}
     >
@@ -62,7 +58,7 @@ const MutilSelectListBox = <T,>(props: MutilSelectListBoxProps<T>) => {
                 // open={isOpen}
               >
                 <span className="block truncate">
-                  {selectedPersons.length < 1 ? 'Select persons' : `Selected persons (${selectedPersons.length})`}
+                  {selectedValues.length < 1 ? 'Select persons' : `Selected persons (${selectedValues.length})`}
                 </span>
                 <span className="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none">
                   <svg className="h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="none" stroke="currentColor">
@@ -89,10 +85,10 @@ const MutilSelectListBox = <T,>(props: MutilSelectListBoxProps<T>) => {
                 static
                 className="max-h-60 rounded-md py-1 text-base leading-6 shadow-xs overflow-auto focus:outline-none sm:text-sm sm:leading-5"
               >
-                {people.map(person => {
-                  const selected = isSelected(person);
+                {list.map(item => {
+                  const selected = isSelected(item);
                   return (
-                    <Listbox.Option key={person} value={person}>
+                    <Listbox.Option key={item.title} value={list}>
                       {({ active }) => (
                         <div
                           className={`${
@@ -100,7 +96,7 @@ const MutilSelectListBox = <T,>(props: MutilSelectListBoxProps<T>) => {
                           } cursor-default select-none relative py-2 pl-8 pr-4`}
                         >
                           <span className={`${selected ? 'font-semibold' : 'font-normal'} block truncate`}>
-                            {person}
+                            {item.value}
                           </span>
                           {selected && (
                             <span
@@ -130,7 +126,7 @@ const MutilSelectListBox = <T,>(props: MutilSelectListBoxProps<T>) => {
               </Listbox.Options>
             </Transition>
             <div className="pt-1 text-sm">
-              {selectedPersons.length > 0 && <>Selected persons: {selectedPersons.join(', ')}</>}
+              {selectedValues.length > 0 && <>Selected persons: {selectedValues.join(', ')}</>}
             </div>
           </div>
         </>

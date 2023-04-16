@@ -1,8 +1,11 @@
-import React, { useState } from 'react';
+/* eslint-disable jsx-a11y/interactive-supports-focus */
+import React, { Fragment, useState } from 'react';
 import { Responsive, WidthProvider } from 'react-grid-layout';
 
+import { GasPlanetIcon } from 'icons';
 import useOffice from 'store/office/hooks';
 
+import { Combobox, Transition } from '@headlessui/react';
 import {
   GlobeAltIcon,
   BoltIcon,
@@ -13,7 +16,7 @@ import {
   EllipsisVerticalIcon,
 } from '@heroicons/react/24/solid';
 
-import { Card, MutilSelectListBox } from 'components/widget';
+import { Card, MultiSelect, Tooltip } from 'components/widget';
 import { printSign } from 'utils';
 
 const ResponsiveGridLayout = WidthProvider(Responsive);
@@ -38,20 +41,30 @@ const Office = () => {
         { i: '6', x: 3, y: 2, w: 3, h: 2, minW: 2 },
       ],
       md: [
-        { i: 'resource', x: 0, y: 0, w: 9, h: 2, minW: 0 },
-        { i: '1', x: 0, y: 0, w: 3, h: 2, minW: 2 },
-        { i: '2', x: 3, y: 0, w: 3, h: 2, minW: 2 },
-        { i: '3', x: 6, y: 0, w: 3, h: 2, minW: 2 },
-        { i: '4', x: 0, y: 1, w: 3, h: 2, minW: 2 },
-        { i: '5', x: 3, y: 1, w: 3, h: 2, minW: 2 },
-        { i: '6', x: 6, y: 1, w: 3, h: 2, minW: 2 },
+        { i: 'simple_national_power', x: 0, y: 0, w: 3, h: 1, minW: 0 },
+        { i: 'simple_rank', x: 3, y: 0, w: 3, h: 1, minW: 0 },
+        { i: 'simple_planet', x: 6, y: 0, w: 3, h: 1, minW: 0 },
+        { i: 'simple_turn', x: 0, y: 1, w: 3, h: 1, minW: 0 },
+        { i: 'simple_money', x: 3, y: 1, w: 3, h: 1, minW: 0 },
+        { i: 'simple_energy', x: 6, y: 1, w: 3, h: 1, minW: 0 },
+        { i: 'status', x: 0, y: 1, w: 3, h: 4, minW: 2 },
+        { i: '2', x: 3, y: 1, w: 3, h: 2, minW: 2 },
+        { i: '3', x: 6, y: 1, w: 3, h: 2, minW: 2 },
+        { i: '4', x: 9, y: 1, w: 3, h: 2, minW: 2 },
+        { i: '5', x: 0, y: 2, w: 3, h: 2, minW: 2 },
+        { i: '6', x: 3, y: 2, w: 3, h: 2, minW: 2 },
       ],
       sm: [
-        { i: 'resource', x: 0, y: 0, w: 6, h: 2, minW: 0 },
-        { i: '1', x: 0, y: 0, w: 3, h: 2, minW: 2 },
-        { i: '2', x: 3, y: 0, w: 3, h: 2, minW: 2 },
-        { i: '3', x: 0, y: 1, w: 3, h: 2, minW: 2 },
-        { i: '4', x: 3, y: 1, w: 3, h: 2, minW: 2 },
+        { i: 'simple_national_power', x: 0, y: 0, w: 2, h: 1, minW: 0 },
+        { i: 'simple_rank', x: 2, y: 0, w: 2, h: 1, minW: 0 },
+        { i: 'simple_planet', x: 4, y: 0, w: 2, h: 1, minW: 0 },
+        { i: 'simple_turn', x: 0, y: 1, w: 2, h: 1, minW: 0 },
+        { i: 'simple_money', x: 2, y: 1, w: 2, h: 1, minW: 0 },
+        { i: 'simple_energy', x: 4, y: 1, w: 2, h: 1, minW: 0 },
+        { i: 'status', x: 0, y: 1, w: 3, h: 4, minW: 2 },
+        { i: '2', x: 3, y: 1, w: 3, h: 2, minW: 2 },
+        { i: '3', x: 6, y: 1, w: 3, h: 2, minW: 2 },
+        { i: '4', x: 9, y: 1, w: 3, h: 2, minW: 2 },
         { i: '5', x: 0, y: 2, w: 3, h: 2, minW: 2 },
         { i: '6', x: 3, y: 2, w: 3, h: 2, minW: 2 },
       ],
@@ -66,6 +79,11 @@ const Office = () => {
       ],
     },
   });
+
+  const lists = [
+    { title: 'asdf', value: 'asdf' },
+    { title: 'tet', value: 'tvbd' },
+  ];
 
   return (
     <article>
@@ -186,49 +204,124 @@ const Office = () => {
               </div>
             </div> */}
 
-        <Card key="status">
-          <Card.Title className="flex gap-x-2 items-center text-xl justify-between">
+        <Card key="status" className="overflow-auto relative scroll">
+          <Card.Title className="flex gap-x-2 items-center text-lg justify-between">
             <div className="flex gap-x-2 items-center">
-              <DocumentTextIcon className="icon w-10 h-10" />
+              <DocumentTextIcon className="icon w-8 h-8" />
               <span className="inline-flex items-center h-full">상태</span>
             </div>
-            <EllipsisVerticalIcon
-              className="icon w-8 h-8 cursor-pointer dark:hover:bg-slate-900"
+            <div
+              role="button"
               onMouseDown={e => {
                 e.preventDefault();
                 e.stopPropagation();
               }}
-            />
+            >
+              <MultiSelect defaultValue={[lists[0]]} onChange={e => console.log('change', e)}>
+                <MultiSelect.Button>
+                  <EllipsisVerticalIcon className="icon w-8 h-8 cursor-pointer dark:hover:bg-slate-900" />
+                </MultiSelect.Button>
+                {lists.map(item => {
+                  return (
+                    <MultiSelect.Option key={item.title} value={item}>
+                      {({ active }) => (
+                        <label htmlFor={item.title} className="flex items-center cursor-pointer">
+                          {/* <input
+                            readOnly
+                            checked={active}
+                            id={item.title}
+                            type="checkbox"
+                            className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                          /> */}
+                          <span className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300 py-1 px-2">
+                            {item.value}
+                          </span>
+                        </label>
+                      )}
+                    </MultiSelect.Option>
+                  );
+                })}
+              </MultiSelect>
+            </div>
           </Card.Title>
           <Card.Body>
-            <p className="flex items-center">
+            <div className="flex items-center gap-x-2">
+              <Tooltip as="div" className="flex items-center" arrow>
+                <GasPlanetIcon className="icon w-8 h-8" />
+                <span>{data?.planet.gas || 0}</span>
+                <Tooltip.Text>사막</Tooltip.Text>
+              </Tooltip>
+              <div className="flex items-center">
+                <GasPlanetIcon className="icon w-8 h-8" />
+                <span>{data?.planet.desert || 0}</span>
+              </div>
+              <div className="flex items-center">
+                <GasPlanetIcon className="icon w-8 h-8" />
+                <span>{data?.planet.aqua || 0}</span>
+              </div>
+              <div className="flex items-center">
+                <GasPlanetIcon className="icon w-8 h-8" />
+                <span>{data?.planet.star || 0}</span>
+              </div>
+              <div className="flex items-center">
+                <GasPlanetIcon className="icon w-8 h-8" />
+                <span>{data?.planet.toxic || 0}</span>
+              </div>
+            </div>
+            <div className="flex items-center">
               <UsersIcon className="icon w-8 h-8" />
               {data?.person && <span>{new Intl.NumberFormat('ko-KR').format(data.person)}</span>}
               <span>(</span>
               <span className="text-red-500">{printSign(data?.income.person)}</span>
               <span>)</span>
-            </p>
-            <p className="flex items-center">
+            </div>
+            <div className="flex items-center">
               <CreditCardIcon className="icon w-8 h-8" />
               {data?.money && <span>{new Intl.NumberFormat('ko-KR').format(data.money)}</span>}
               <span>(</span>
               <span className="text-red-500">{printSign(data?.income.money)}</span>
               <span>)</span>
-            </p>
-            <p className="flex items-center">
+            </div>
+            <div className="flex items-center">
               <CreditCardIcon className="icon w-8 h-8" />
               {data?.money && <span>{new Intl.NumberFormat('ko-KR').format(data.money)}</span>}
               <span>(</span>
               <span className="text-red-500">{printSign(data?.income.money)}</span>
               <span>)</span>
-            </p>
-            <p className="flex items-center">
+            </div>
+            <div className="flex items-center">
               <BoltIcon className="icon w-8 h-8" />
               {data?.energy && <span>{new Intl.NumberFormat('ko-KR').format(data.energy)}</span>}
               <span>(</span>
               <span className="text-red-500">{printSign(data?.income.energy)}</span>
               <span>)</span>
-            </p>
+            </div>
+            <div className="grid grid-cols-2 ml-2">
+              <div className="flex items-center gap-x-2">
+                <span className="text-green-500">Li</span>
+                <span className="text-xs">{new Intl.NumberFormat('ko-KR').format(data?.mineral.Li || 0)}</span>
+              </div>
+              <div className="flex items-center gap-x-2">
+                <span className="text-purple-500">Cs</span>
+                <span className="text-xs">{new Intl.NumberFormat('ko-KR').format(data?.mineral.Cs || 0)}</span>
+              </div>
+              <div className="flex items-center gap-x-2">
+                <span className="text-gray-200">Be</span>
+                <span className="text-xs">{new Intl.NumberFormat('ko-KR').format(data?.mineral.Be || 0)}</span>
+              </div>
+              <div className="flex items-center gap-x-2">
+                <span className="text-blue-500">Fe</span>
+                <span className="text-xs">{new Intl.NumberFormat('ko-KR').format(data?.mineral.Fe || 0)}</span>
+              </div>
+              <div className="flex items-center gap-x-2">
+                <span className="text-green-500">Li</span>
+                <span className="text-xs">{new Intl.NumberFormat('ko-KR').format(data?.mineral.dark_matter || 0)}</span>
+              </div>
+              <div className="flex items-center gap-x-2">
+                <span className="text-green-500">Li</span>
+                <span className="text-xs">{new Intl.NumberFormat('ko-KR').format(data?.mineral.anti_matter || 0)}</span>
+              </div>
+            </div>
           </Card.Body>
         </Card>
         <Card key="2">
@@ -248,11 +341,6 @@ const Office = () => {
           <Card.Title> 6 </Card.Title>
         </Card>
       </ResponsiveGridLayout>
-      <MutilSelectListBox<{ value: string }>
-        onChange={() => {}}
-        list={[{ title: 'asdf', value: 'asdf' }]}
-        defaultValue={{ title: 'asdf', value: 'asdf' }}
-      />
     </article>
   );
 };

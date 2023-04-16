@@ -11,6 +11,57 @@ html {
 	font-family: 'BMJUA'
 }
 
+body, .scroll {
+	@apply scrollbar-thin dark:scrollbar-thumb-gray-900 dark:scrollbar-track-slate-700
+}
+
+.tooltip {
+	@apply bg-slate-700 text-gray-200 border-black cyan:bg-cyan-950 cyan:border-cyan-700 dark:bg-slate-900 border rounded dark:border-slate-600 cyan:text-gray-200 dark:text-gray-200 px-1 py-0.5 text-sm;
+}
+
+.tooltip-arrow::before {
+	content:'';
+	@apply w-0 h-0 border-[7px] pointer-events-none transition-all ease-out duration-150 z-50 absolute;
+}
+
+.tooltip-arrow::after {
+	content:'';
+	@apply w-0 h-0 border-[6px] pointer-events-none transition-all ease-out duration-150 z-50 absolute;
+}
+
+.tooltip-top::before, .tooltip-top-start::before, .tooltip-top-end::before {
+	@apply top-[100%] left-[50%] -translate-x-1/2 border-solid border-transparent dark:border-t-slate-600 cyan:border-t-cyan-700 border-t-black;
+}
+
+.tooltip-top::after, .tooltip-top-start::after, .tooltip-top-end::after {
+	@apply top-[100%] left-[50%] -translate-x-1/2 border-solid border-transparent dark:border-t-slate-900 cyan:border-t-cyan-950 border-t-slate-700;
+}
+
+.tooltip-bottom::before, .tooltip-bottom-start::before, .tooltip-bottom-end::before {
+	@apply bottom-[100%] left-[50%] -translate-x-1/2 border-solid border-transparent dark:border-b-slate-600 cyan:border-b-cyan-700 border-b-black;
+}
+
+.tooltip-bottom::after, .tooltip-bottom-start::after, .tooltip-bottom-end::after {
+	@apply bottom-[100%] left-[50%] -translate-x-1/2 border-solid border-transparent dark:border-b-slate-900 cyan:border-b-cyan-950 border-b-slate-700;
+}
+
+.tooltip-left::before, .tooltip-left-start::before, .tooltip-left-end::before {
+	@apply top-[50%] left-[100%] -translate-y-1/2 border-solid border-transparent dark:border-l-slate-600 cyan:border-l-cyan-700 border-l-black;
+}
+
+.tooltip-left::after, .tooltip-left-start::after, .tooltip-left-end::after {
+	@apply top-[50%] left-[100%] -translate-y-1/2 border-solid border-transparent dark:border-l-slate-900 cyan:border-l-cyan-950 border-l-slate-700;
+}
+
+.tooltip-right::before, .tooltip-right-start::before, .tooltip-right-end::before {
+	@apply top-[50%] right-[100%] -translate-y-1/2 border-solid border-transparent dark:border-r-slate-600 cyan:border-r-cyan-700 border-r-black;
+}
+
+.tooltip-right::after, .tooltip-right-start::after, .tooltip-right-end::after {
+	@apply top-[50%] right-[100%] -translate-y-1/2 border-solid border-transparent dark:border-r-slate-900 cyan:border-r-cyan-950 border-r-slate-700;
+}
+
+
 @layer components {
 	.sidebar-basis{
 		@apply basis-56;

@@ -1,4 +1,5 @@
-// eslint-disable-next-line import/no-import-module-exports
+/* eslint-disable import/no-import-module-exports */
+import tailwindScrollbar from 'tailwind-scrollbar';
 import { themeVariants } from 'tailwindcss-theme-variants';
 
 /** @type {import('tailwindcss').Config} */
@@ -9,6 +10,7 @@ module.exports = {
   //   expect: {},
   // },
   plugins: [
+    tailwindScrollbar(),
     themeVariants({
       themes: {
         dark: {

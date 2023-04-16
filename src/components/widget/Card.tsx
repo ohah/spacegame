@@ -47,7 +47,7 @@ const Card = forwardRef(({ ...props }: CardProps, ref: ForwardedRef<HTMLElement>
   return (
     <section
       className={[
-        'rounded border cyan:border-cyan-400 p-2 cyan:bg-cyan-700 dark:border-slate-500 dark:bg-slate-800',
+        'rounded border cyan:border-cyan-400 cyan:bg-cyan-700 dark:border-slate-500 dark:bg-slate-800',
         className,
       ].join(' ')}
       ref={ref}
@@ -55,7 +55,7 @@ const Card = forwardRef(({ ...props }: CardProps, ref: ForwardedRef<HTMLElement>
     >
       {index !== -1 && (
         <header
-          className="cursor-move select-none"
+          className="cursor-move select-none sticky top-0 left-0 border-collapse cyan:border-cyan-400 cyan:bg-cyan-700 dark:border-slate-500 dark:bg-slate-800 border-b text-lg"
           onMouseDown={onMouseDown}
           onMouseUp={onMouseUp}
           onTouchEnd={onTouchEnd}
